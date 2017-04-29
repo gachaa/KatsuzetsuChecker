@@ -16,14 +16,41 @@ class CheckViewController: UIViewController {
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
     
-    
+    //言った言葉が表示されるラベルとスタートボタンだけどこれから変える
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var button: UIButton!
+    
+    @IBOutlet var tTLabel: UILabel!
+    
+    @IBOutlet var timeLabel: UILabel!
+    
+    //言った言葉と○回目が表示されるラベルの配列
+    @IBOutlet var label1: UILabel!
+    
+    //早口言葉の配列[言葉, Sランクに必要なタイム, Aランク,　Bランク]
+    var tongueTwisterArray: [[Any]] = []
+    var tmpArray: [[Any]] = []
+    
+    var timer: Timer!
+    var count: Double = 0
+    
+    var answer: String = ""
+
+    
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         
         speechRecognizer.delegate = self
+        
+        //------------------------ここから下に早口言葉を書く------------------------//
+        tmpArray.append(["あいうえお", 1, 2, 3])
+        tmpArray.append(["かきくけこ", 1, 2, 3])
+        tmpArray.append(["さしすせそ", 1, 2, 3])
+        //------------------------ここから上に早口言葉を書く------------------------//
+        
+        //ランダムに3つ入ったtTArrayができる。
+        choiceTongueTwister()
         
         //ボタンを無効にする(?)
         button.isEnabled = false
@@ -39,6 +66,30 @@ class CheckViewController: UIViewController {
         
         //
         requestRecognizerAuthorization()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+    }
+    
+    func up(){
+        count += 0.01
+        timeLabel.text = "".appendingFormat("%.2f", count)
+    }
+    
+    //tongueTwisterArrayにtemArrayを入れるメソッド。引数で何個入れるか決める。とりあえず3
+    func choiceTongueTwister(){
+        for _ in 0..<3 {
+            let index = Int(arc4random_uniform(UInt32(tmpArray.count)))
+            tongueTwisterArray.append(tmpArray[index])
+            tmpArray.remove(at: index)
+        }
+        setTTLabel()
+    }
+    
+    //tTLabelに早口言葉を表示
+    func setTTLabel(){
+        tTLabel.text = tongueTwisterArray[0][0] as? String
     }
     
     
@@ -73,6 +124,9 @@ class CheckViewController: UIViewController {
     
     //録音を開始した時に呼ばれるメソッド
     private func startRecording() throws {
+        
+        print("a")
+        
         //recognitionTaskを空にする
         refreshTask()
         
@@ -91,20 +145,29 @@ class CheckViewController: UIViewController {
         // trueだと現在-1回目のリクエスト結果が返ってくる模様。falseだとボタンをオフにしたときに音声認識の結果が返ってくる設定。
         recognitionRequest.shouldReportPartialResults = true
         
-        recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { [weak self] result, error in
+        recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) {
+            [weak self] result, error in
             guard let `self` = self else { return }
             
             var isFinal = false
-            
+
             //nilじゃなかったら
             if let result = result {
-                self.label.text = result.bestTranscription.formattedString
+                
+                print("b")
+                self.label1.text = result.bestTranscription.formattedString
                 
                 isFinal = result.isFinal
+                
+                //self.button.isEnabled = false
+                
             }
             
+            print("c")
+
             // エラーがある、もしくは最後の認識結果だった場合の処理
             if error != nil || isFinal {
+                print("e")
                 self.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
                 
@@ -124,7 +187,7 @@ class CheckViewController: UIViewController {
         
         try startAudioEngine()
     }
-    
+
     //録音開始直後に呼ばれる
     private func refreshTask() {
         if let recognitionTask = recognitionTask {
@@ -133,6 +196,8 @@ class CheckViewController: UIViewController {
         }
     }
     
+    
+    //starRecordingで呼ばれる
     private func startAudioEngine() throws {
         // startの前にリソースを確保しておく。
         audioEngine.prepare()
@@ -144,15 +209,18 @@ class CheckViewController: UIViewController {
     
     @IBAction func tappedStartButton(_ sender: AnyObject) {
         if audioEngine.isRunning {
+            print("stop")
             audioEngine.stop()
             recognitionRequest?.endAudio()
             button.isEnabled = false
+            timer.invalidate()
             button.setTitle("停止中", for: .disabled)
             
         } else {
             try! startRecording()
+            timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.up), userInfo: nil, repeats: true)
+            count = 0
             button.setTitle("音声認識を中止", for: [])
-            
         }
     }
     
@@ -176,6 +244,7 @@ extension CheckViewController: SFSpeechRecognizerDelegate {
     // 音声認識の可否が変更したときに呼ばれるdelegate
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         if available {
+            //ここいつくるんだろう
             button.isEnabled = true
             button.setTitle("音声認識スタート", for: [])
         } else {
