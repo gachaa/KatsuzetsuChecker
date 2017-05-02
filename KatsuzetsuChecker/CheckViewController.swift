@@ -35,6 +35,11 @@ class CheckViewController: UIViewController {
     var count: Double = 0
     
     var answer: String = ""
+    
+    var timerCheck:Int = 0
+    var finishTimer: Timer!
+    var preText: String = "pre"
+    var nowText: String = "now"
 
     
     
@@ -124,8 +129,8 @@ class CheckViewController: UIViewController {
     
     //録音を開始した時に呼ばれるメソッド
     private func startRecording() throws {
-        
-        print("a")
+    
+        print("startRecording")
         
         //recognitionTaskを空にする
         refreshTask()
@@ -154,16 +159,21 @@ class CheckViewController: UIViewController {
             //nilじゃなかったら
             if let result = result {
                 
-                print("b")
+                print("result更新")
                 self.label1.text = result.bestTranscription.formattedString
-                
+            
+                self.nowText = result.bestTranscription.formattedString
+
                 isFinal = result.isFinal
                 
                 //self.button.isEnabled = false
-                
+                if self.timerCheck == 0 {
+                    self.finishTimer = Timer.scheduledTimer(timeInterval: 1.00, target: self, selector: #selector(self.finishCheck), userInfo: nil, repeats: true)
+                    self.timerCheck = 1
+                }
             }
             
-            print("c")
+            print("result終")
 
             // エラーがある、もしくは最後の認識結果だった場合の処理
             if error != nil || isFinal {
@@ -207,6 +217,24 @@ class CheckViewController: UIViewController {
         label.text = "どうぞ喋ってください。"
     }
     
+    //読み終えたかのチェック
+    func finishCheck(){
+        print("finishcheck")
+        print(preText, nowText)
+        
+        if preText == nowText {
+            print("finishfinish")
+            audioEngine.stop()
+            recognitionRequest?.endAudio()
+            button.isEnabled = false
+            timer.invalidate()
+            button.setTitle("停止中", for: .disabled)
+            finishTimer.invalidate()
+        }
+        
+        self.preText = self.nowText
+    }
+    
     @IBAction func tappedStartButton(_ sender: AnyObject) {
         if audioEngine.isRunning {
             print("stop")
@@ -226,6 +254,10 @@ class CheckViewController: UIViewController {
     
     func performSegueToResultVC() {
         performSegue(withIdentifier: "toResultVC", sender: nil)
+    }
+    
+    @IBAction func stop (){
+        finishTimer.invalidate()
     }
 
     /*
