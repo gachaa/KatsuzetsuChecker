@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet var button: UIButton!
     
     override func viewDidLoad() {
@@ -22,6 +22,12 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+//    func performSegueToCheckView() {
+//        performSegue(withIdentifier: "toCheckView", sender: nil)
+//    }
 
+    
+    
+    
 }
 

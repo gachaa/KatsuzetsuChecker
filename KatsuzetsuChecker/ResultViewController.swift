@@ -9,6 +9,14 @@
 import UIKit
 
 class ResultViewController: UIViewController {
+    
+    var answer: [[Any]] = []
+    var question: String = ""
+    
+    //どのくらい異なってるかをとりあえずカウント
+    var comparePoint: Int = 0
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +29,9 @@ class ResultViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func compareText() {
+        
+    }
 
     /*
     // MARK: - Navigation
@@ -31,5 +42,4 @@ class ResultViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

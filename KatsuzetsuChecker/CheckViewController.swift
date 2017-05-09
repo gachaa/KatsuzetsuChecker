@@ -16,34 +16,40 @@ class CheckViewController: UIViewController {
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
     
-    //言った言葉が表示されるラベルとスタートボタンだけどこれから変える
-    @IBOutlet weak var label: UILabel!
+    
+    //どうぞしゃべってくださいのラベル
+    @IBOutlet weak var douzoLabel: UILabel!
     @IBOutlet weak var button: UIButton!
     
+    //お題を表示するラベル
     @IBOutlet var tTLabel: UILabel!
     
     @IBOutlet var timeLabel: UILabel!
     
-    //言った言葉と○回目が表示されるラベルの配列
-    @IBOutlet var label1: UILabel!
+    //言った言葉が表示されるラベル
+    @IBOutlet var label: UILabel!
     
     //早口言葉の配列[言葉, Sランクに必要なタイム, Aランク,　Bランク]
     var tongueTwisterArray: [[Any]] = []
     var tmpArray: [[Any]] = []
+    var tTCount: Int = 0
     
     var timer: Timer!
     var count: Double = 0
     
-    var answer: String = ""
-    
+    //ラベルに変化がないか調べるセット
     var timerCheck:Int = 0
     var finishTimer: Timer!
     var preText: String = "pre"
     var nowText: String = "now"
+    
+    //得点を出すための配列、[言った言葉, タイム]
+    var answer: [[Any]] = []
 
     
     
     public override func viewDidLoad() {
+        print("checkview")
         super.viewDidLoad()
         
         speechRecognizer.delegate = self
@@ -57,7 +63,7 @@ class CheckViewController: UIViewController {
         //ランダムに3つ入ったtTArrayができる。
         choiceTongueTwister()
         
-        //ボタンを無効にする(?)
+        //ボタンを無効にする
         button.isEnabled = false
     }
     
@@ -69,7 +75,6 @@ class CheckViewController: UIViewController {
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        //
         requestRecognizerAuthorization()
     }
     
@@ -77,6 +82,7 @@ class CheckViewController: UIViewController {
         super.viewWillAppear(true)
     }
     
+    //タイム測定のためのメソッド
     func up(){
         count += 0.01
         timeLabel.text = "".appendingFormat("%.2f", count)
@@ -94,7 +100,11 @@ class CheckViewController: UIViewController {
     
     //tTLabelに早口言葉を表示
     func setTTLabel(){
-        tTLabel.text = tongueTwisterArray[0][0] as? String
+        if tTCount < 3{
+            tTLabel.text = tongueTwisterArray[tTCount][0] as? String
+        } else {
+            tTLabel.text = "Finish"
+        }
     }
     
     
@@ -109,6 +119,7 @@ class CheckViewController: UIViewController {
                 //ここに音声認識の許可されてる/されてないの時の処理
                 switch authStatus {
                 case .authorized:
+                    //色々許可されてればここが呼ばれている
                     self.button.isEnabled = true
                     
                 case .denied:
@@ -158,17 +169,15 @@ class CheckViewController: UIViewController {
 
             //nilじゃなかったら
             if let result = result {
-                
-                print("result更新")
-                self.label1.text = result.bestTranscription.formattedString
+                self.label.text = result.bestTranscription.formattedString
             
                 self.nowText = result.bestTranscription.formattedString
 
                 isFinal = result.isFinal
-                
-                //self.button.isEnabled = false
+            
+                //一回しか呼ばれない。書き方変えた方がいいかも
                 if self.timerCheck == 0 {
-                    self.finishTimer = Timer.scheduledTimer(timeInterval: 1.00, target: self, selector: #selector(self.finishCheck), userInfo: nil, repeats: true)
+                    self.finishTimer = Timer.scheduledTimer(timeInterval: 0.50, target: self, selector: #selector(self.finishCheck), userInfo: nil, repeats: true)
                     self.timerCheck = 1
                 }
             }
@@ -184,7 +193,8 @@ class CheckViewController: UIViewController {
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
                 
-                self.button.isEnabled = true
+                self.douzoLabel.text = ""
+                
                 self.button.setTitle("音声認識スタート", for: [])
             }
         }
@@ -214,51 +224,81 @@ class CheckViewController: UIViewController {
         
         try audioEngine.start()
         
-        label.text = "どうぞ喋ってください。"
+        douzoLabel.text = "認識中"
     }
     
-    //読み終えたかのチェック
+    //読み終えたかのチェック。終えてたら音声認識を終了し、終えていなければpreとnowを更新
     func finishCheck(){
         print("finishcheck")
         print(preText, nowText)
         
         if preText == nowText {
             print("finishfinish")
+            
+            //音声認識を止める
             audioEngine.stop()
             recognitionRequest?.endAudio()
-            button.isEnabled = false
-            timer.invalidate()
-            button.setTitle("停止中", for: .disabled)
+            
+            //button.setTitle("停止中", for: .disabled)
+            douzoLabel.text = "停止中"
             finishTimer.invalidate()
+            
+            //得点のためのタイマーをとめる
+            timer.invalidate()
+            
+            answer.append([nowText, count])
+            
+            nowText = "now"
+            preText = "pre"
+            
+            //問題出しきってたら画面遷移、違うならお題のラベルセットしてtTCount上げる
+            if tTCount == 2 {
+                performSegueToResultView()
+            } else {
+                tTCount += 1
+                setTTLabel()
+                self.button.isHidden = false
+            }
         }
-        
         self.preText = self.nowText
     }
     
     @IBAction func tappedStartButton(_ sender: AnyObject) {
-        if audioEngine.isRunning {
-            print("stop")
-            audioEngine.stop()
-            recognitionRequest?.endAudio()
-            button.isEnabled = false
-            timer.invalidate()
-            button.setTitle("停止中", for: .disabled)
+        //音声認識ストップするときの処理
+//        if audioEngine.isRunning {
+//            print("stop")
+//            audioEngine.stop()
+//            recognitionRequest?.endAudio()
+//            button.isEnabled = false
+//            timer.invalidate()
+//            button.setTitle("停止中", for: .disabled)
             
-        } else {
+            
+        //音声認識スタートする時の処理
+        if audioEngine.isRunning == false {
+            label.text = ""
+            timerCheck = 0
             try! startRecording()
             timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.up), userInfo: nil, repeats: true)
             count = 0
-            button.setTitle("音声認識を中止", for: [])
+            //button.setTitle("音声認識を中止", for: [])
+            button.isHidden = true
         }
     }
     
-    func performSegueToResultVC() {
-        performSegue(withIdentifier: "toResultVC", sender: nil)
+    //画面遷移のためのメソッド
+    func performSegueToResultView() {
+        performSegue(withIdentifier: "toResultView", sender: nil)
     }
     
-    @IBAction func stop (){
-        finishTimer.invalidate()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "toResultView") {            
+            let resultView = segue.destination as! ResultViewController
+            resultView.answer = self.answer
+        }
     }
+
+    
 
     /*
     // MARK: - Navigation

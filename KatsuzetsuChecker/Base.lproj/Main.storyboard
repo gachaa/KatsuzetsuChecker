@@ -21,24 +21,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boM-AN-PUS">
-                                <rect key="frame" x="150" y="347" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mun-rR-eEc">
+                                <rect key="frame" x="148" y="318" width="62" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="画面遷移"/>
                                 <connections>
-                                    <segue destination="wOT-ba-Va1" kind="show" id="Uxv-De-Aov"/>
+                                    <segue destination="wOT-ba-Va1" kind="presentation" id="Fa5-fl-CfD"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <outlet property="button" destination="boM-AN-PUS" id="ND7-v8-E4D"/>
+                        <outlet property="button" destination="mun-rR-eEc" id="utN-Sc-uwO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="118" y="36"/>
+            <point key="canvasLocation" x="117.59999999999999" y="35.532233883058474"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="VBV-rG-X29">
@@ -142,24 +142,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r7C-VA-SMr">
-                                <rect key="frame" x="268" y="583" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="stop"/>
-                                <connections>
-                                    <action selector="stop" destination="wOT-ba-Va1" eventType="touchUpInside" id="46B-yt-F4W"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="button" destination="fwG-Sj-Qhj" id="HDj-E8-d8h"/>
-                        <outlet property="label" destination="5U7-PE-aea" id="4HE-zQ-KIH"/>
-                        <outlet property="label1" destination="qqY-AN-Me1" id="Ta3-fc-uOo"/>
+                        <outlet property="douzoLabel" destination="5U7-PE-aea" id="w6b-AI-bB2"/>
+                        <outlet property="label" destination="qqY-AN-Me1" id="BrW-nw-pdg"/>
                         <outlet property="tTLabel" destination="LEv-Tu-iPq" id="bhI-L0-Lts"/>
                         <outlet property="timeLabel" destination="jMH-Gv-uXN" id="Xqw-42-5fN"/>
-                        <segue destination="nz3-33-dVT" kind="show" identifier="toResultVC" id="S2y-uN-sJM"/>
+                        <segue destination="nz3-33-dVT" kind="show" identifier="toResultView" id="S2y-uN-sJM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZIt-u6-P4L" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -177,6 +169,15 @@
                     <view key="view" contentMode="scaleToFill" id="kOM-AF-vmB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Result View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aw7-pU-Y4Z">
+                                <rect key="frame" x="153" y="198" width="89" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
