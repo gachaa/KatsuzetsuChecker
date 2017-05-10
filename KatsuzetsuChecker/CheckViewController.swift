@@ -29,7 +29,7 @@ class CheckViewController: UIViewController {
     //言った言葉が表示されるラベル
     @IBOutlet var label: UILabel!
     
-    //早口言葉の配列[言葉, Sランクに必要なタイム, Aランク,　Bランク]
+    //早口言葉の配列[言葉, 文字数, 基準タイム]
     var tongueTwisterArray: [[Any]] = []
     var tmpArray: [[Any]] = []
     var tTCount: Int = 0
@@ -44,7 +44,7 @@ class CheckViewController: UIViewController {
     var nowText: String = "now"
     
     //得点を出すための配列、[言った言葉, タイム]
-    var answer: [[Any]] = []
+    var answerArray: [[Any]] = []
 
     
     
@@ -55,9 +55,9 @@ class CheckViewController: UIViewController {
         speechRecognizer.delegate = self
         
         //------------------------ここから下に早口言葉を書く------------------------//
-        tmpArray.append(["あいうえお", 1, 2, 3])
-        tmpArray.append(["かきくけこ", 1, 2, 3])
-        tmpArray.append(["さしすせそ", 1, 2, 3])
+        tmpArray.append(["あいうえお", 15, 3])
+        tmpArray.append(["かきくけこ", 15, 3])
+        tmpArray.append(["さしすせそ", 15, 3])
         //------------------------ここから上に早口言葉を書く------------------------//
         
         //ランダムに3つ入ったtTArrayができる。
@@ -177,16 +177,16 @@ class CheckViewController: UIViewController {
             
                 //一回しか呼ばれない。書き方変えた方がいいかも
                 if self.timerCheck == 0 {
-                    self.finishTimer = Timer.scheduledTimer(timeInterval: 0.50, target: self, selector: #selector(self.finishCheck), userInfo: nil, repeats: true)
+                    self.finishTimer = Timer.scheduledTimer(timeInterval: 0.75, target: self, selector: #selector(self.finishCheck), userInfo: nil, repeats: true)
                     self.timerCheck = 1
                 }
             }
             
-            print("result終")
+       
 
             // エラーがある、もしくは最後の認識結果だった場合の処理
             if error != nil || isFinal {
-                print("e")
+                print("認識終了")
                 self.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
                 
@@ -246,7 +246,7 @@ class CheckViewController: UIViewController {
             //得点のためのタイマーをとめる
             timer.invalidate()
             
-            answer.append([nowText, count])
+            answerArray.append([nowText, count])
             
             nowText = "now"
             preText = "pre"
@@ -294,11 +294,10 @@ class CheckViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "toResultView") {            
             let resultView = segue.destination as! ResultViewController
-            resultView.answer = self.answer
+            resultView.answerArray = self.answerArray
+            resultView.questionArray = self.tongueTwisterArray
         }
     }
-
-    
 
     /*
     // MARK: - Navigation
