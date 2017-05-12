@@ -16,7 +16,12 @@ class ResultViewController: UIViewController {
     var questionArray: [[Any]] = []
     
     //どのくらい異なってるかをとりあえずカウント
-    var comparePointArray: [Int] = [0, 0, 0]
+//    var comparePointArray: [Int] = [0, 0, 0]
+    
+    var point: Double = 0
+    
+    @IBOutlet var pointLabel: UILabel!
+    @IBOutlet var scoreLabel: UILabel!
     
     
 
@@ -25,13 +30,11 @@ class ResultViewController: UIViewController {
         
         print("ResultVC")
         
-        print(questionArray)
-        print(answerArray)
         compareText()
 
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -40,18 +43,22 @@ class ResultViewController: UIViewController {
     func compareText(){
         for k in 0..<3 {
             
+            print(answerArray[k][0])
+
+            
+            var comparePoint: Double = questionArray[k][1] as! Double * 2
+            print("comparePoint初期値", comparePoint)
+            
             var question: String = questionArray[k][0] as! String
             question = question + question + question
             let answerPartsArray = makeArray(str: answerArray[k][0] as! String)
             let questionPartsArray = makeArray(str: question)
             
-            print(questionPartsArray, answerPartsArray)
-            print(questionPartsArray.count, answerPartsArray.count)
+//            print(questionPartsArray, answerPartsArray)
             
             var top = 0
             
             for i in 0..<questionPartsArray.count{
-                print("i: ", i)
                 var check = 0
                 
                 //各PartsArrayを比較して、違ったらcomparePに+1
@@ -63,7 +70,7 @@ class ResultViewController: UIViewController {
                             break
                         }
                         
-                        print(answerPartsArray[j], questionPartsArray[i])
+                        print(questionPartsArray[i], answerPartsArray[j])
                         if answerPartsArray[j] == questionPartsArray[i] {
                             top = j + 1
                             check = 0
@@ -80,7 +87,7 @@ class ResultViewController: UIViewController {
                             break
                         }
                         
-                        print(answerPartsArray[j], questionPartsArray[i])
+                        print(questionPartsArray[i], answerPartsArray[j])
                         if answerPartsArray[j] == questionPartsArray[i] {
                             top = j + 1
                             check = 0
@@ -92,13 +99,21 @@ class ResultViewController: UIViewController {
                 }
                 
                 if check == 1 {
-                    comparePointArray[k] += 1
+                    comparePoint -= 1
+                    print(comparePoint)
                 }
             }
             
+            //pointに値を貯める
+            point += pointCheck(k: k, compare: comparePoint)
+            print("point途中", point)
+            
         }
         
-        
+        //平均の点数を出す
+        point /= 3
+        print("point最終", point)
+        viewSet()
     }
 
     //Stringを2文字ずつの要素にして配列にまとめるメソッド
@@ -115,9 +130,30 @@ class ResultViewController: UIViewController {
     }
     
     //得点を計算するメソッド
-    func pointCheck(){
+    func pointCheck(k: Int, compare: Double) -> Double {
         var timePoint: Double = 0
         var accuracyPoint: Double = 0
+        
+        if (questionArray[k][2] as! Double) < (answerArray[k][1] as! Double) {
+            timePoint = 100 * (questionArray[k][2] as! Double) / (answerArray[k][1] as! Double)
+            print("timeP", timePoint)
+        }
+        
+        print(compare)
+//        print((questionArray[k][1] as! Double) * 2)
+        accuracyPoint = 100 * Double(compare) / ((questionArray[k][1] as! Double) * 2)
+        print("accuracyP", accuracyPoint)
+        
+        return (timePoint + accuracyPoint)/2
+    }
+    
+    func viewSet() {
+        pointLabel.text = "".appendingFormat("%.0f", point)
+        
+    }
+    
+    @IBAction func top(){
+        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     

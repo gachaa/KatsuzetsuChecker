@@ -55,9 +55,9 @@ class CheckViewController: UIViewController {
         speechRecognizer.delegate = self
         
         //------------------------ここから下に早口言葉を書く------------------------//
-        tmpArray.append(["あいうえお", 15, 3])
-        tmpArray.append(["かきくけこ", 15, 3])
-        tmpArray.append(["さしすせそ", 15, 3])
+        tmpArray.append(["生麦生米生卵", 18.0, 1.5])
+        tmpArray.append(["隣の客はよく柿食う客だ", 33.0, 2.0])
+        tmpArray.append(["東京特許許可局", 21.0, 1.8])
         //------------------------ここから上に早口言葉を書く------------------------//
         
         //ランダムに3つ入ったtTArrayができる。
@@ -229,7 +229,6 @@ class CheckViewController: UIViewController {
     
     //読み終えたかのチェック。終えてたら音声認識を終了し、終えていなければpreとnowを更新
     func finishCheck(){
-        print("finishcheck")
         print(preText, nowText)
         
         if preText == nowText {
@@ -253,7 +252,11 @@ class CheckViewController: UIViewController {
             
             //問題出しきってたら画面遷移、違うならお題のラベルセットしてtTCount上げる
             if tTCount == 2 {
-                performSegueToResultView()
+                
+                //x秒後に画面遷移メソッドを呼ぶ
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.performSegueToResultView()
+                }
             } else {
                 tTCount += 1
                 setTTLabel()
