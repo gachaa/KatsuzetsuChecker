@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>マイク</string>
+	<string>早口言葉を話すために必要です。</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>音声認識</string>
+	<string>あなたの言葉を認識できるようになります。</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>

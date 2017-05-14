@@ -23,8 +23,6 @@ class ResultViewController: UIViewController {
     @IBOutlet var pointLabel: UILabel!
     @IBOutlet var scoreLabel: UILabel!
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,7 +42,6 @@ class ResultViewController: UIViewController {
         for k in 0..<3 {
             
             print(answerArray[k][0])
-
             
             var comparePoint: Double = questionArray[k][1] as! Double * 2
             print("comparePoint初期値", comparePoint)
@@ -53,8 +50,6 @@ class ResultViewController: UIViewController {
             question = question + question + question
             let answerPartsArray = makeArray(str: answerArray[k][0] as! String)
             let questionPartsArray = makeArray(str: question)
-            
-//            print(questionPartsArray, answerPartsArray)
             
             var top = 0
             
@@ -140,7 +135,6 @@ class ResultViewController: UIViewController {
         }
         
         print(compare)
-//        print((questionArray[k][1] as! Double) * 2)
         accuracyPoint = 100 * Double(compare) / ((questionArray[k][1] as! Double) * 2)
         print("accuracyP", accuracyPoint)
         
