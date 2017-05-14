@@ -104,7 +104,7 @@ class CheckViewController: UIViewController {
     
     //tTLabelに早口言葉を表示
     func setTTLabel(){
-        if tTCount < 3{
+        if tTCount < 3 {
             tTLabel.text = tongueTwisterArray[tTCount][0] as? String
         } else {
             tTLabel.text = "Finish"
@@ -129,34 +129,8 @@ class CheckViewController: UIViewController {
                 case .denied:
                     print("a")
                     //音声認識を許可しなかった場合
-                    let alert: UIAlertController = UIAlertController(
-                        title: "音声認識をオンにする",
-                        message: "[設定]>[プライバシー]から音声認識をKatsuetsuに許可してください。",
-                        preferredStyle: .alert
-                    )
-                    
-                    
-                    alert.addAction(UIAlertAction(
-                        title: "設定",
-                        style: .default,
-                        handler:{ action in
-                            print("設定")
-                            let url = URL(string: "App-Prefs:root://")!
-                            if UIApplication.shared.canOpenURL(url) {
-                                if #available(iOS 10.0, *) {
-                                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                                }else{
-                                    UIApplication.shared.openURL(url)
-                                }
-                            }
-                        }
-                    ))
-                    alert.addAction(UIAlertAction(
-                        title: "キャンセル",
-                        style: .cancel,
-                        handler: nil
-                    ))
-                    self.present(alert, animated: true, completion: nil)
+                    //音声認識の設定を求めるアラートを表示
+                    self.recognizerAlert()
                 
                     self.button.isEnabled = false
                     self.button.setTitle("音声認識へのアクセスが拒否されています。", for: .disabled)
@@ -171,11 +145,43 @@ class CheckViewController: UIViewController {
                 case .notDetermined:
                     print("c")
                     //音声認識許可まだ決めてない
+                    self.recognizerAlert()
                     self.button.isEnabled = false
                     self.button.setTitle("音声認識はまだ許可されていません。", for: .disabled)
                 }
             }
         }
+    }
+    
+    func recognizerAlert() {
+        let alert: UIAlertController = UIAlertController(
+            title: "音声認識をオンにする",
+            message: "[設定]>[プライバシー]から音声認識をKatsuetsuに許可してください。",
+            preferredStyle: .alert
+        )
+        
+        
+        alert.addAction(UIAlertAction(
+            title: "設定",
+            style: .default,
+            handler:{ action in
+                print("設定")
+                let url = URL(string: "App-Prefs:root://")!
+                if UIApplication.shared.canOpenURL(url) {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }else{
+                        UIApplication.shared.openURL(url)
+                    }
+                }
+        }
+        ))
+        alert.addAction(UIAlertAction(
+            title: "キャンセル",
+            style: .cancel,
+            handler: nil
+        ))
+        self.present(alert, animated: true, completion: nil)
     }
     
 
@@ -339,15 +345,14 @@ class CheckViewController: UIViewController {
 
             } else if status == AVAuthorizationStatus.restricted {
                 print("mic-a")
-                // ユーザー自身にカメラへのアクセスが許可されていない
+                // ユーザー自身にマイクへのアクセスが許可されていない
             } else if status == AVAuthorizationStatus.notDetermined {
                 print("mic-b")
                 // まだアクセス許可を聞いていない
+                //マイクへのアクセスを求める(初回のやつ)
                 AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeAudio, completionHandler: {(granted: Bool) in})
                 print("mic-b-fin")
             } else if status == AVAuthorizationStatus.denied {
-                
-                print("mic-c")
                 // アクセス許可されてない
                 //マイクオンを促すアラートを表示
                 micAlert()

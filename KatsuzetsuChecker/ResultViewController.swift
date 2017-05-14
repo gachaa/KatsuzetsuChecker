@@ -146,10 +146,11 @@ class ResultViewController: UIViewController {
         
     }
     
-    @IBAction func top(){
-        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
-    }
+//    @IBAction func top(){
+//        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+//    }
     
+        
     
     
     /*

@@ -117,11 +117,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8s0-Ow-hmy">
-                                <rect key="frame" x="149" y="516" width="77" height="30"/>
+                                <rect key="frame" x="149" y="516" width="77" height="13"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="タイトルへ"/>
                                 <connections>
-                                    <action selector="top" destination="nz3-33-dVT" eventType="touchUpInside" id="ZZg-iK-O4w"/>
+                                    <segue destination="AYa-QH-Hww" kind="unwind" unwindAction="unwindToVCWithSegue:" id="S4Z-qm-Yqe"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rS9-9p-GGU">
@@ -146,6 +146,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EzU-g2-DMa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="AYa-QH-Hww" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1677.5999999999999" y="35.532233883058474"/>
         </scene>
