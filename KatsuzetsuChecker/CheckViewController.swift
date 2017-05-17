@@ -17,17 +17,23 @@ class CheckViewController: UIViewController {
     private let audioEngine = AVAudioEngine()
     
     
-    //どうぞしゃべってくださいのラベル
-    @IBOutlet weak var douzoLabel: UILabel!
+
+    //スタートのボタン
     @IBOutlet weak var button: UIButton!
     
     //お題を表示するラベル
     @IBOutlet var tTLabel: UILabel!
+    @IBOutlet var tTLabel2: UILabel!
+    @IBOutlet var tTLabel3: UILabel!
     
-    @IBOutlet var timeLabel: UILabel!
+    //@IBOutlet var timeLabel: UILabel!
     
     //言った言葉が表示されるラベル
     @IBOutlet var label: UILabel!
+    
+    //喋ってる間画像変える
+    let speakingImg: UIImage = UIImage(named: "img-speaking@2x.png")!
+    let startSpeakImg: UIImage = UIImage(named: "bt-speak@2x.png")!
     
     //早口言葉の配列[言葉, 文字数, 基準タイム]
     var tongueTwisterArray: [[Any]] = []
@@ -52,6 +58,12 @@ class CheckViewController: UIViewController {
     public override func viewDidLoad() {
         print("checkview")
         super.viewDidLoad()
+        
+        label.text = ""
+        tTLabel.text = ""
+        tTLabel2.text = ""
+        tTLabel3.text = ""
+        
         
         speechRecognizer.delegate = self
         
@@ -89,7 +101,7 @@ class CheckViewController: UIViewController {
     //タイム測定のためのメソッド
     func up(){
         count += 0.01
-        timeLabel.text = "".appendingFormat("%.2f", count)
+        //timeLabel.text = "".appendingFormat("%.2f", count)
     }
     
     //tongueTwisterArrayにtemArrayを入れるメソッド。引数で何個入れるか決める。とりあえず3
@@ -104,11 +116,10 @@ class CheckViewController: UIViewController {
     
     //tTLabelに早口言葉を表示
     func setTTLabel(){
-        if tTCount < 3 {
-            tTLabel.text = tongueTwisterArray[tTCount][0] as? String
-        } else {
-            tTLabel.text = "Finish"
-        }
+        tTLabel.text = tongueTwisterArray[tTCount][0] as? String
+        tTLabel2.text = tongueTwisterArray[tTCount][0] as? String
+        tTLabel3.text = tongueTwisterArray[tTCount][0] as? String
+        
     }
     
     
@@ -240,7 +251,8 @@ class CheckViewController: UIViewController {
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
                 
-                self.douzoLabel.text = ""
+                
+                
                 
                 self.button.setTitle("音声認識スタート", for: [])
             }
@@ -271,8 +283,7 @@ class CheckViewController: UIViewController {
         
         try audioEngine.start()
         
-        //douzoLabel.text = "認識中"
-    }
+            }
     
     //読み終えたかのチェック。終えてたら音声認識を終了し、終えていなければpreとnowを更新
     func finishCheck(){
@@ -285,8 +296,7 @@ class CheckViewController: UIViewController {
             audioEngine.stop()
             recognitionRequest?.endAudio()
             
-            //button.setTitle("停止中", for: .disabled)
-            douzoLabel.text = "停止中"
+            
             finishTimer.invalidate()
             
             //得点のためのタイマーをとめる
@@ -307,7 +317,9 @@ class CheckViewController: UIViewController {
             } else {
                 tTCount += 1
                 setTTLabel()
-                self.button.isHidden = false
+                //self.button.isHidden = false
+                self.button.setImage(startSpeakImg, for: UIControlState.normal)
+                self.button.isEnabled = true
             }
         }
         self.preText = self.nowText
@@ -338,10 +350,13 @@ class CheckViewController: UIViewController {
                 timerCheck = 0
                 try! startRecording()
                 timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.up), userInfo: nil, repeats: true)
-                douzoLabel.text = "認識中"
+                
+                //douzoLabel.text = "認識中"
                 count = 0
-                //button.setTitle("音声認識を中止", for: [])
-                button.isHidden = true
+                
+                //ボタンの画像を透明にして無効化
+                button.setImage(speakingImg, for: UIControlState.normal)
+                button.isEnabled = false
 
             } else if status == AVAuthorizationStatus.restricted {
                 print("mic-a")

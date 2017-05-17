@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		591DBBFC1EB05C720081BE0E /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591DBBFB1EB05C720081BE0E /* CheckViewController.swift */; };
 		591DBBFE1EB05C880081BE0E /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591DBBFD1EB05C880081BE0E /* ResultViewController.swift */; };
+		5957B80B1ECAAFE500144977 /* OthutomeFont_ver1.04.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5957B80A1ECAAFE500144977 /* OthutomeFont_ver1.04.ttf */; };
+		598FDE0F1ECC9F0800FE27A0 /* bg-check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 598FDE091ECC9F0800FE27A0 /* bg-check@2x.png */; };
+		598FDE101ECC9F0800FE27A0 /* bg-top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 598FDE0A1ECC9F0800FE27A0 /* bg-top@2x.png */; };
+		598FDE111ECC9F0800FE27A0 /* bt-speak@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 598FDE0B1ECC9F0800FE27A0 /* bt-speak@2x.png */; };
+		598FDE121ECC9F0800FE27A0 /* bt-start@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 598FDE0C1ECC9F0800FE27A0 /* bt-start@2x.png */; };
+		598FDE131ECC9F0800FE27A0 /* bt-top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 598FDE0D1ECC9F0800FE27A0 /* bt-top@2x.png */; };
+		598FDE141ECC9F0800FE27A0 /* img-speaking@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 598FDE0E1ECC9F0800FE27A0 /* img-speaking@2x.png */; };
 		59AE15CE1EAB4D6300E67378 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AE15CD1EAB4D6300E67378 /* AppDelegate.swift */; };
 		59AE15D01EAB4D6300E67378 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AE15CF1EAB4D6300E67378 /* ViewController.swift */; };
 		59AE15D31EAB4D6300E67378 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59AE15D11EAB4D6300E67378 /* Main.storyboard */; };
@@ -19,6 +26,13 @@
 /* Begin PBXFileReference section */
 		591DBBFB1EB05C720081BE0E /* CheckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
 		591DBBFD1EB05C880081BE0E /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		5957B80A1ECAAFE500144977 /* OthutomeFont_ver1.04.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OthutomeFont_ver1.04.ttf; sourceTree = "<group>"; };
+		598FDE091ECC9F0800FE27A0 /* bg-check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-check@2x.png"; sourceTree = "<group>"; };
+		598FDE0A1ECC9F0800FE27A0 /* bg-top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-top@2x.png"; sourceTree = "<group>"; };
+		598FDE0B1ECC9F0800FE27A0 /* bt-speak@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt-speak@2x.png"; sourceTree = "<group>"; };
+		598FDE0C1ECC9F0800FE27A0 /* bt-start@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt-start@2x.png"; sourceTree = "<group>"; };
+		598FDE0D1ECC9F0800FE27A0 /* bt-top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt-top@2x.png"; sourceTree = "<group>"; };
+		598FDE0E1ECC9F0800FE27A0 /* img-speaking@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img-speaking@2x.png"; sourceTree = "<group>"; };
 		59AE15CA1EAB4D6300E67378 /* KatsuzetsuChecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KatsuzetsuChecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59AE15CD1EAB4D6300E67378 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59AE15CF1EAB4D6300E67378 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -39,11 +53,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5965ADEE1ECA077700AE771B /* images */ = {
+			isa = PBXGroup;
+			children = (
+				598FDE091ECC9F0800FE27A0 /* bg-check@2x.png */,
+				598FDE0A1ECC9F0800FE27A0 /* bg-top@2x.png */,
+				598FDE0B1ECC9F0800FE27A0 /* bt-speak@2x.png */,
+				598FDE0C1ECC9F0800FE27A0 /* bt-start@2x.png */,
+				598FDE0D1ECC9F0800FE27A0 /* bt-top@2x.png */,
+				598FDE0E1ECC9F0800FE27A0 /* img-speaking@2x.png */,
+			);
+			name = images;
+			path = KatsuzetsuChecker/images;
+			sourceTree = "<group>";
+		};
 		59AE15C11EAB4D6300E67378 = {
 			isa = PBXGroup;
 			children = (
 				59AE15CC1EAB4D6300E67378 /* KatsuzetsuChecker */,
 				59AE15CB1EAB4D6300E67378 /* Products */,
+				5965ADEE1ECA077700AE771B /* images */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +87,7 @@
 		59AE15CC1EAB4D6300E67378 /* KatsuzetsuChecker */ = {
 			isa = PBXGroup;
 			children = (
+				5957B80A1ECAAFE500144977 /* OthutomeFont_ver1.04.ttf */,
 				59AE15CD1EAB4D6300E67378 /* AppDelegate.swift */,
 				59AE15CF1EAB4D6300E67378 /* ViewController.swift */,
 				59AE15D11EAB4D6300E67378 /* Main.storyboard */,
@@ -131,6 +161,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				59AE15D81EAB4D6300E67378 /* LaunchScreen.storyboard in Resources */,
+				598FDE0F1ECC9F0800FE27A0 /* bg-check@2x.png in Resources */,
+				598FDE131ECC9F0800FE27A0 /* bt-top@2x.png in Resources */,
+				5957B80B1ECAAFE500144977 /* OthutomeFont_ver1.04.ttf in Resources */,
+				598FDE111ECC9F0800FE27A0 /* bt-speak@2x.png in Resources */,
+				598FDE101ECC9F0800FE27A0 /* bg-top@2x.png in Resources */,
+				598FDE141ECC9F0800FE27A0 /* img-speaking@2x.png in Resources */,
+				598FDE121ECC9F0800FE27A0 /* bt-start@2x.png in Resources */,
 				59AE15D51EAB4D6300E67378 /* Assets.xcassets in Resources */,
 				59AE15D31EAB4D6300E67378 /* Main.storyboard in Resources */,
 			);

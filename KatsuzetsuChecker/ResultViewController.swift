@@ -126,8 +126,8 @@ class ResultViewController: UIViewController {
     
     //得点を計算するメソッド
     func pointCheck(k: Int, compare: Double) -> Double {
-        var timePoint: Double = 0
-        var accuracyPoint: Double = 0
+        var timePoint: Double = 100
+        var accuracyPoint: Double = 100
         
         if (questionArray[k][2] as! Double) < (answerArray[k][1] as! Double) {
             timePoint = 100 * (questionArray[k][2] as! Double) / (answerArray[k][1] as! Double)
