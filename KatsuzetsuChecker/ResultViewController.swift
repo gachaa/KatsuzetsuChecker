@@ -10,18 +10,21 @@ import UIKit
 
 class ResultViewController: UIViewController {
     
+    @IBOutlet var pointLabel: UILabel!
+    @IBOutlet var timePointLabel: UILabel!
+    @IBOutlet var accuracyPointLabel: UILabel!
+    @IBOutlet var scoreLabel: UILabel!
+    
     //checkVCからの答えとお題
     //answerArray = [言った言葉, タイム], questionArray = [言葉, 文字数, 基準タイム]
     var answerArray: [[Any]] = []
     var questionArray: [[Any]] = []
     
-    //どのくらい異なってるかをとりあえずカウント
-//    var comparePointArray: [Int] = [0, 0, 0]
     
+    var timePoint: Double = 0
+    var accuracyPoint: Double = 0
     var point: Double = 0
-    
-    @IBOutlet var pointLabel: UILabel!
-    @IBOutlet var scoreLabel: UILabel!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,15 +103,18 @@ class ResultViewController: UIViewController {
             }
             
             //pointに値を貯める
-            point += pointCheck(k: k, compare: comparePoint)
-            print("point途中", point)
+            timePoint += pointCheck(k: k, compare: comparePoint).0
+            accuracyPoint += pointCheck(k: k, compare: comparePoint).1
+            
             
         }
         
         //平均の点数を出す
-        point /= 3
+        timePoint /= 3
+        accuracyPoint /= 3
+        point = (timePoint + accuracyPoint) / 2
         print("point最終", point)
-        viewSet()
+        setAnyPointLabel()
     }
 
     //Stringを2文字ずつの要素にして配列にまとめるメソッド
@@ -125,25 +131,50 @@ class ResultViewController: UIViewController {
     }
     
     //得点を計算するメソッド
-    func pointCheck(k: Int, compare: Double) -> Double {
-        var timePoint: Double = 100
-        var accuracyPoint: Double = 100
+    func pointCheck(k: Int, compare: Double) -> (Double, Double) {
+        var timePointCal: Double = 100
+        var accuracyPointCal: Double = 100
         
         if (questionArray[k][2] as! Double) < (answerArray[k][1] as! Double) {
-            timePoint = 100 * (questionArray[k][2] as! Double) / (answerArray[k][1] as! Double)
-            print("timeP", timePoint)
+            timePointCal = 100 * (questionArray[k][2] as! Double) / (answerArray[k][1] as! Double)
+            print("timeP", timePointCal)
         }
         
         print(compare)
-        accuracyPoint = 100 * Double(compare) / ((questionArray[k][1] as! Double) * 2)
-        print("accuracyP", accuracyPoint)
+        accuracyPointCal = 100 * Double(compare) / ((questionArray[k][1] as! Double) * 2)
+        print("accuracyP", accuracyPointCal)
         
-        return (timePoint + accuracyPoint)/2
+        return (timePointCal, accuracyPointCal)
     }
     
-    func viewSet() {
+    
+    func setAnyPointLabel() {
+        if point > 99 {
+            //ラベルに入らないから3桁だったら2桁にしてしまおう！
+            point -= 1
+        }
         pointLabel.text = "".appendingFormat("%.0f", point)
         
+        if timePoint >= 90 {
+            timePointLabel.text = "さいこう！"
+        } else if timePoint >= 70 {
+            timePointLabel.text = "いいかんじ"
+        } else if timePoint >= 40 {
+            timePointLabel.text = "まあまあ"
+        } else {
+            timePointLabel.text = "いまひとつ"
+        }
+        
+        if accuracyPoint >= 90 {
+            accuracyPointLabel.text = "さいこう！"
+        } else if accuracyPoint >= 80 {
+            accuracyPointLabel.text = "いいかんじ"
+        } else if accuracyPoint >= 60 {
+            accuracyPointLabel.text = "まあまあ"
+        } else {
+            accuracyPointLabel.text = "いまひとつ"
+        }
+
     }
     
 //    @IBAction func top(){

@@ -26,14 +26,14 @@ class CheckViewController: UIViewController {
     @IBOutlet var tTLabel2: UILabel!
     @IBOutlet var tTLabel3: UILabel!
     
-    //@IBOutlet var timeLabel: UILabel!
+    @IBOutlet var timeLabel: UILabel!
     
     //言った言葉が表示されるラベル
     @IBOutlet var label: UILabel!
     
     //喋ってる間画像変える
-    let speakingImg: UIImage = UIImage(named: "img-speaking@2x.png")!
-    let startSpeakImg: UIImage = UIImage(named: "bt-speak@2x.png")!
+    let speakingImg: UIImage = UIImage(named: "bt-speaking.png")!
+    let startSpeakImg: UIImage = UIImage(named: "bt-speak.png")!
     
     //早口言葉の配列[言葉, 文字数, 基準タイム]
     var tongueTwisterArray: [[Any]] = []
@@ -101,7 +101,7 @@ class CheckViewController: UIViewController {
     //タイム測定のためのメソッド
     func up(){
         count += 0.01
-        //timeLabel.text = "".appendingFormat("%.2f", count)
+        timeLabel.text = "".appendingFormat("%.2f", count)
     }
     
     //tongueTwisterArrayにtemArrayを入れるメソッド。引数で何個入れるか決める。とりあえず3

@@ -73,32 +73,39 @@
                                     <action selector="tappedStartButton:" destination="wOT-ba-Va1" eventType="touchUpInside" id="bqR-nl-Url"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qqY-AN-Me1">
+                                <rect key="frame" x="45" y="271" width="289" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="隣の客はよく柿食う客だ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEv-Tu-iPq">
-                                <rect key="frame" x="78" y="104" width="218" height="21"/>
+                                <rect key="frame" x="78" y="109" width="218" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="隣の客はよく柿食う客だ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iKS-Hf-XOk">
-                                <rect key="frame" x="78" y="133" width="218" height="21"/>
+                                <rect key="frame" x="78" y="138" width="218" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="隣の客はよく柿食う客だ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="93v-Gq-vdp">
-                                <rect key="frame" x="78" y="162" width="218" height="21"/>
+                                <rect key="frame" x="78" y="167" width="218" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qqY-AN-Me1">
-                                <rect key="frame" x="52" y="269" width="270" height="90"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9e-bz-NoS">
+                                <rect key="frame" x="157" y="378" width="61" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.59526553961748641" green="0.59526553961748641" blue="0.59526553961748641" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -110,7 +117,8 @@
                         <outlet property="tTLabel" destination="LEv-Tu-iPq" id="MrF-rH-rf4"/>
                         <outlet property="tTLabel2" destination="iKS-Hf-XOk" id="1D4-vw-pFr"/>
                         <outlet property="tTLabel3" destination="93v-Gq-vdp" id="1Bq-EW-p6u"/>
-                        <segue destination="nz3-33-dVT" kind="presentation" identifier="toResultView" id="S2y-uN-sJM"/>
+                        <outlet property="timeLabel" destination="P9e-bz-NoS" id="SGK-3L-nQ1"/>
+                        <segue destination="nz3-33-dVT" kind="presentation" identifier="toResultView" id="h8R-cn-1he"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZIt-u6-P4L" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -129,20 +137,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rS9-9p-GGU">
-                                <rect key="frame" x="166" y="216" width="42" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg-result.png" translatesAutoresizingMaskIntoConstraints="NO" id="3bK-nt-E6b">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7T-ux-en1">
-                                <rect key="frame" x="102" y="110" width="170" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8s0-Ow-hmy">
                                 <rect key="frame" x="139" y="400" width="97" height="97"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -151,11 +149,34 @@
                                     <segue destination="AYa-QH-Hww" kind="unwind" unwindAction="unwindToVCWithSegue:" id="S4Z-qm-Yqe"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="いいかんじ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJg-Gl-gcQ">
+                                <rect key="frame" x="191" y="243" width="115" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="がんばって" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFN-wL-SbQ">
+                                <rect key="frame" x="191" y="291" width="115" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="55" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7T-ux-en1">
+                                <rect key="frame" x="50" y="49" width="184" height="194"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="150"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="pointLabel" destination="D7T-ux-en1" id="dtf-lV-Mgs"/>
+                        <outlet property="accuracyPointLabel" destination="ZJg-Gl-gcQ" id="rV2-Qy-ovf"/>
+                        <outlet property="pointLabel" destination="D7T-ux-en1" id="VtA-wI-Ck6"/>
+                        <outlet property="timePointLabel" destination="aFN-wL-SbQ" id="T7U-IA-7WL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EzU-g2-DMa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -165,10 +186,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bg-check.png" width="750" height="1334"/>
-        <image name="bg-top.png" width="750" height="1334"/>
-        <image name="bt-speak.png" width="195" height="195"/>
-        <image name="bt-start.png" width="195" height="195"/>
-        <image name="bt-top.png" width="195" height="195"/>
+        <image name="bg-check.png" width="1001" height="1779"/>
+        <image name="bg-result.png" width="1001" height="1780"/>
+        <image name="bg-top.png" width="1001" height="1780"/>
+        <image name="bt-speak.png" width="251" height="251"/>
+        <image name="bt-start.png" width="251" height="251"/>
+        <image name="bt-top.png" width="251" height="251"/>
     </resources>
 </document>
