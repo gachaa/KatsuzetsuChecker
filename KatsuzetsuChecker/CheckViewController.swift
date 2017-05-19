@@ -32,7 +32,6 @@ class CheckViewController: UIViewController {
     @IBOutlet var label: UILabel!
     
     //喋ってる間画像変える
-    let speakingImg: UIImage = UIImage(named: "bt-speaking.png")!
     let startSpeakImg: UIImage = UIImage(named: "bt-speak.png")!
     
     //早口言葉の配列[言葉, 文字数, 基準タイム]
@@ -56,7 +55,6 @@ class CheckViewController: UIViewController {
     
     
     public override func viewDidLoad() {
-        print("checkview")
         super.viewDidLoad()
         
         label.text = ""
@@ -70,10 +68,16 @@ class CheckViewController: UIViewController {
         label.numberOfLines = 0
         
         //------------------------ここから下に早口言葉を書く------------------------//
-        tmpArray.append(["生麦生米生卵", 18.0, 1.5])
-        tmpArray.append(["隣の客はよく柿食う客だ", 33.0, 2.0])
-        tmpArray.append(["東京特許許可局", 21.0, 1.8])
-        tmpArray.append(["新春シャンソンショー", 30.0, 1.8])
+        tmpArray.append(["生麦生米生卵", 18.0, 4.44])
+        tmpArray.append(["隣の客はよく柿食う客だ", 33.0, 4.50])
+        tmpArray.append(["東京特許許可局", 21.0, 4.28])
+        
+        tmpArray.append(["新春シャンソンショー", 30.0, 3.66])
+        tmpArray.append(["魔術修行中", 18.0, 3.26])
+        tmpArray.append(["バスガス爆発", 18.0, 3.39])
+        
+        tmpArray.append(["老若男女", 18.0, 2.71])
+        tmpArray.append(["著作者", 18.0, 2.47])
         //------------------------ここから上に早口言葉を書く------------------------//
         
         //ランダムに3つ入ったtTArrayができる。
@@ -134,31 +138,28 @@ class CheckViewController: UIViewController {
                 //ここに音声認識の許可されてる/されてないの時の処理
                 switch authStatus {
                 case .authorized:
-                    //色々許可されてればここが呼ばれている
+                    //許可されてる
                     self.button.isEnabled = true
                     
                 case .denied:
-                    print("a")
                     //音声認識を許可しなかった場合
                     //音声認識の設定を求めるアラートを表示
                     self.recognizerAlert()
                 
                     self.button.isEnabled = false
-                    self.button.setTitle("音声認識へのアクセスが拒否されています。", for: .disabled)
+                    //self.button.setTitle("音声認識へのアクセスが拒否されています。", for: .disabled)
                     
                 case .restricted:
-                    print("b")
-                    //音声認識が不可能なデバイス？
+                    //ペアレンタルコントロールとかでダメになっている？
                     self.button.isEnabled = false
-                    self.button.setTitle("この端末で音声認識はできません。", for: .disabled)
+                    //self.button.setTitle("この端末で音声認識はできません。", for: .disabled)
                  
                 //多分ここにはこない
                 case .notDetermined:
-                    print("c")
                     //音声認識許可まだ決めてない
                     self.recognizerAlert()
                     self.button.isEnabled = false
-                    self.button.setTitle("音声認識はまだ許可されていません。", for: .disabled)
+                    //self.button.setTitle("音声認識はまだ許可されていません。", for: .disabled)
                 }
             }
         }
@@ -227,6 +228,7 @@ class CheckViewController: UIViewController {
 
             //nilじゃなかったら
             if let result = result {
+                
                 self.label.text = result.bestTranscription.formattedString
             
                 self.nowText = result.bestTranscription.formattedString
@@ -239,22 +241,24 @@ class CheckViewController: UIViewController {
                     self.timerCheck = 1
                 }
             }
-            
-       
-
+        
             // エラーがある、もしくは最後の認識結果だった場合の処理
             if error != nil || isFinal {
                 print("認識終了")
+                
+            
+                self.answerArray.append([self.nowText, self.count])
+                
+                self.nowText = "now"
+                self.preText = "pre"
+                
                 self.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
                 
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
                 
-                
-                
-                
-                self.button.setTitle("音声認識スタート", for: [])
+                //self.button.setTitle("音声認識スタート", for: [])
             }
         }
         
@@ -287,25 +291,17 @@ class CheckViewController: UIViewController {
     
     //読み終えたかのチェック。終えてたら音声認識を終了し、終えていなければpreとnowを更新
     func finishCheck(){
-        print(preText, nowText)
-        
+
         if preText == nowText {
-            print("finishfinish")
             
             //音声認識を止める
             audioEngine.stop()
             recognitionRequest?.endAudio()
             
-            
             finishTimer.invalidate()
             
             //得点のためのタイマーをとめる
             timer.invalidate()
-            
-            answerArray.append([nowText, count])
-            
-            nowText = "now"
-            preText = "pre"
             
             //問題出しきってたら画面遷移、違うならお題のラベルセットしてtTCount上げる
             if tTCount == 2 {
@@ -318,7 +314,7 @@ class CheckViewController: UIViewController {
                 tTCount += 1
                 setTTLabel()
                 //self.button.isHidden = false
-                self.button.setImage(startSpeakImg, for: UIControlState.normal)
+                //self.button.setImage(startSpeakImg, for: UIControlState.normal)
                 self.button.isEnabled = true
             }
         }
@@ -326,19 +322,7 @@ class CheckViewController: UIViewController {
     }
     
     @IBAction func tappedStartButton(_ sender: AnyObject) {
-        
-        print("startButton-tapped")
-        
-        //音声認識ストップするときの処理
-//        if audioEngine.isRunning {
-//            print("stop")
-//            audioEngine.stop()
-//            recognitionRequest?.endAudio()
-//            button.isEnabled = false
-//            timer.invalidate()
-//            button.setTitle("停止中", for: .disabled)
-            
-            
+
         //音声認識スタートする時の処理
         if audioEngine.isRunning == false {
             
@@ -351,16 +335,15 @@ class CheckViewController: UIViewController {
                 try! startRecording()
                 timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.up), userInfo: nil, repeats: true)
                 
-                //douzoLabel.text = "認識中"
                 count = 0
                 
                 //ボタンの画像を透明にして無効化
-                button.setImage(speakingImg, for: UIControlState.normal)
                 button.isEnabled = false
 
             } else if status == AVAuthorizationStatus.restricted {
                 print("mic-a")
                 // ユーザー自身にマイクへのアクセスが許可されていない
+                micAlert()
             } else if status == AVAuthorizationStatus.notDetermined {
                 print("mic-b")
                 // まだアクセス許可を聞いていない
@@ -372,14 +355,6 @@ class CheckViewController: UIViewController {
                 //マイクオンを促すアラートを表示
                 micAlert()
             }
-            
-//            label.text = ""
-//            timerCheck = 0
-//            try! startRecording()
-//            timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.up), userInfo: nil, repeats: true)
-//            count = 0
-//            //button.setTitle("音声認識を中止", for: [])
-//            button.isHidden = true
         }
     }
     
@@ -389,7 +364,6 @@ class CheckViewController: UIViewController {
             message: "[設定]>[プライバシー]からマイクをKatsuetsuに許可してください。",
             preferredStyle: .alert
         )
-        
         
         alert.addAction(UIAlertAction(
             title: "設定",
@@ -404,8 +378,7 @@ class CheckViewController: UIViewController {
                         UIApplication.shared.openURL(url)
                     }
                 }
-        }
-        ))
+        }))
         alert.addAction(UIAlertAction(
             title: "キャンセル",
             style: .cancel,
@@ -445,14 +418,29 @@ extension CheckViewController: SFSpeechRecognizerDelegate {
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         if available {
             //ネット入れるとここに来る
-            print("d")
+            print("extension出た")
             button.isEnabled = true
-            button.setTitle("音声認識スタート", for: [])
         } else {
             //ネットきるとここに来る
-            print("e")
+            print("extension入った")
             button.isEnabled = false
-            button.setTitle("音声認識ストップ", for: .disabled)
+            internetAlert()
         }
     }
+    
+    func internetAlert(){
+        let alert: UIAlertController = UIAlertController(
+            title: "インターネット接続がありません",
+            message: "音声認識を行えません。機内モードをオフにするかWi-Fiを使用してください。",
+            preferredStyle: .alert
+        )
+        
+        alert.addAction(UIAlertAction(
+            title: "OK",
+            style: .default,
+            handler: nil
+        ))
+        self.present(alert, animated: true, completion: nil)
+    }
+
 }

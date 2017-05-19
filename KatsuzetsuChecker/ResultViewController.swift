@@ -28,10 +28,6 @@ class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("ResultVC")
-        
-        compareText()
 
         // Do any additional setup after loading the view.
     }
@@ -41,16 +37,23 @@ class ResultViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        print(answerArray)
+        print("ResultVC")
+        
+        compareText()
+    }
+    
     func compareText(){
         for k in 0..<3 {
-            
+            print(k, "番目")
             print(answerArray[k][0])
             
-            var comparePoint: Double = questionArray[k][1] as! Double * 2
-            print("comparePoint初期値", comparePoint)
+            var comparePoint: Double = questionArray[k][1] as! Double * 1.5
             
             var question: String = questionArray[k][0] as! String
             question = question + question + question
+            
             let answerPartsArray = makeArray(str: answerArray[k][0] as! String)
             let questionPartsArray = makeArray(str: question)
             
@@ -64,11 +67,10 @@ class ResultViewController: UIViewController {
                     for j in top ..< i + 2 {
                         
                         if j >= answerPartsArray.count {
-                            check = 1
+                            check = 2
                             break
                         }
                         
-                        print(questionPartsArray[i], answerPartsArray[j])
                         if answerPartsArray[j] == questionPartsArray[i] {
                             top = j + 1
                             check = 0
@@ -81,11 +83,10 @@ class ResultViewController: UIViewController {
                     for j in top..<top + 3 {
                         
                         if j >= answerPartsArray.count {
-                            check = 1
+                            check = 2
                             break
                         }
                         
-                        print(questionPartsArray[i], answerPartsArray[j])
                         if answerPartsArray[j] == questionPartsArray[i] {
                             top = j + 1
                             check = 0
@@ -98,21 +99,25 @@ class ResultViewController: UIViewController {
                 
                 if check == 1 {
                     comparePoint -= 1
-                    print(comparePoint)
+                } else if check == 2 {
+                    comparePoint -= 1.5
                 }
             }
             
             //pointに値を貯める
             timePoint += pointCheck(k: k, compare: comparePoint).0
             accuracyPoint += pointCheck(k: k, compare: comparePoint).1
-            
-            
+            print("timeP", pointCheck(k: k, compare: comparePoint).0)
+            print("accuracyP", pointCheck(k: k, compare: comparePoint).1)
+
         }
         
         //平均の点数を出す
         timePoint /= 3
         accuracyPoint /= 3
         point = (timePoint + accuracyPoint) / 2
+        print("最終tP", timePoint)
+        print("最終aP", accuracyPoint)
         print("point最終", point)
         setAnyPointLabel()
     }
@@ -137,13 +142,13 @@ class ResultViewController: UIViewController {
         
         if (questionArray[k][2] as! Double) < (answerArray[k][1] as! Double) {
             timePointCal = 100 * (questionArray[k][2] as! Double) / (answerArray[k][1] as! Double)
-            print("timeP", timePointCal)
         }
         
-        print(compare)
-        accuracyPointCal = 100 * Double(compare) / ((questionArray[k][1] as! Double) * 2)
-        print("accuracyP", accuracyPointCal)
-        
+        accuracyPointCal = 100 * Double(compare) / ((questionArray[k][1] as! Double) * 1.5)
+        if accuracyPointCal < 0{
+            accuracyPointCal *= -1
+        }
+            
         return (timePointCal, accuracyPointCal)
     }
     

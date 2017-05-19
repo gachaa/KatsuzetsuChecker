@@ -18,6 +18,7 @@
 		594503C21ECD7E1E00FDC7C6 /* bg-check.png in Resources */ = {isa = PBXBuildFile; fileRef = 594503C01ECD7E1E00FDC7C6 /* bg-check.png */; };
 		594503C31ECD7E1E00FDC7C6 /* bg-result.png in Resources */ = {isa = PBXBuildFile; fileRef = 594503C11ECD7E1E00FDC7C6 /* bg-result.png */; };
 		5957B80B1ECAAFE500144977 /* OthutomeFont_ver1.04.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5957B80A1ECAAFE500144977 /* OthutomeFont_ver1.04.ttf */; };
+		59776F781ECF2E3A00596176 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 59776F771ECF2E3A00596176 /* splash.png */; };
 		59AE15CE1EAB4D6300E67378 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AE15CD1EAB4D6300E67378 /* AppDelegate.swift */; };
 		59AE15D01EAB4D6300E67378 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AE15CF1EAB4D6300E67378 /* ViewController.swift */; };
 		59AE15D31EAB4D6300E67378 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59AE15D11EAB4D6300E67378 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 		594503C01ECD7E1E00FDC7C6 /* bg-check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-check.png"; sourceTree = "<group>"; };
 		594503C11ECD7E1E00FDC7C6 /* bg-result.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-result.png"; sourceTree = "<group>"; };
 		5957B80A1ECAAFE500144977 /* OthutomeFont_ver1.04.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OthutomeFont_ver1.04.ttf; sourceTree = "<group>"; };
+		59776F771ECF2E3A00596176 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		59AE15CA1EAB4D6300E67378 /* KatsuzetsuChecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KatsuzetsuChecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59AE15CD1EAB4D6300E67378 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59AE15CF1EAB4D6300E67378 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				594503B81ECD7B6400FDC7C6 /* bt-start.png */,
 				594503B91ECD7B6400FDC7C6 /* bt-top.png */,
 				5935DEB01ECDFA660078B6E6 /* icon.png */,
+				59776F771ECF2E3A00596176 /* splash.png */,
 			);
 			name = images;
 			path = KatsuzetsuChecker/images;
@@ -167,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59AE15D81EAB4D6300E67378 /* LaunchScreen.storyboard in Resources */,
+				59776F781ECF2E3A00596176 /* splash.png in Resources */,
 				594503BD1ECD7B6400FDC7C6 /* bt-speaking.png in Resources */,
 				594503BE1ECD7B6400FDC7C6 /* bt-start.png in Resources */,
 				5957B80B1ECAAFE500144977 /* OthutomeFont_ver1.04.ttf in Resources */,
