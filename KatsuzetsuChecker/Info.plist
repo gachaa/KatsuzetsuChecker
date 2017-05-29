@@ -24,8 +24,6 @@
 	<string>早口言葉を話すために必要です。</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>早口言葉を認識するために必要です。</string>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -23,15 +23,15 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg-top.png" translatesAutoresizingMaskIntoConstraints="NO" id="T6L-6W-d4V">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="570"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mun-rR-eEc">
-                                <rect key="frame" x="139" y="400" width="97" height="97"/>
+                                <rect key="frame" x="114" y="341" width="92" height="92"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="bt-start.png"/>
                                 <connections>
@@ -47,7 +47,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="35.532233883058474"/>
+            <point key="canvasLocation" x="116.25" y="34.859154929577464"/>
         </scene>
         <!--Check View Controller-->
         <scene sceneID="4yj-PH-ae8">
@@ -58,15 +58,15 @@
                         <viewControllerLayoutGuide type="bottom" id="IqY-J2-Nso"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="HAo-gC-SZU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg-check.png" translatesAutoresizingMaskIntoConstraints="NO" id="wld-sV-BrF">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="570"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwG-Sj-Qhj">
-                                <rect key="frame" x="139" y="400" width="97" height="97"/>
+                                <rect key="frame" x="114" y="341" width="92" height="92"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="bt-speak.png"/>
                                 <connections>
@@ -74,35 +74,35 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qqY-AN-Me1">
-                                <rect key="frame" x="45" y="271" width="289" height="90"/>
+                                <rect key="frame" x="43" y="219" width="235" height="81"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="隣の客はよく柿食う客だ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEv-Tu-iPq">
-                                <rect key="frame" x="78" y="109" width="218" height="21"/>
+                                <rect key="frame" x="60" y="89" width="200" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="19"/>
+                                <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="隣の客はよく柿食う客だ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iKS-Hf-XOk">
-                                <rect key="frame" x="78" y="138" width="218" height="21"/>
+                                <rect key="frame" x="51" y="118" width="218" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="19"/>
+                                <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="隣の客はよく柿食う客だ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="93v-Gq-vdp">
-                                <rect key="frame" x="78" y="167" width="218" height="21"/>
+                                <rect key="frame" x="51" y="147" width="218" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="19"/>
+                                <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9e-bz-NoS">
-                                <rect key="frame" x="157" y="378" width="61" height="22"/>
+                                <rect key="frame" x="116" y="317" width="88" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="17"/>
                                 <color key="textColor" red="0.59526553961748641" green="0.59526553961748641" blue="0.59526553961748641" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -123,7 +123,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZIt-u6-P4L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="904.79999999999995" y="35.532233883058474"/>
+            <point key="canvasLocation" x="903.75" y="34.859154929577464"/>
         </scene>
         <!--Result View Controller-->
         <scene sceneID="8Tm-xc-yf8">
@@ -134,39 +134,39 @@
                         <viewControllerLayoutGuide type="bottom" id="pkV-nL-hKE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kOM-AF-vmB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg-result.png" translatesAutoresizingMaskIntoConstraints="NO" id="3bK-nt-E6b">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="570"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8s0-Ow-hmy">
-                                <rect key="frame" x="139" y="400" width="97" height="97"/>
+                                <rect key="frame" x="114" y="341" width="92" height="92"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="タイトルへ" image="bt-top.png"/>
                                 <connections>
                                     <segue destination="AYa-QH-Hww" kind="unwind" unwindAction="unwindToVCWithSegue:" id="S4Z-qm-Yqe"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJg-Gl-gcQ">
-                                <rect key="frame" x="191" y="243" width="115" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFN-wL-SbQ">
-                                <rect key="frame" x="191" y="291" width="115" height="25"/>
+                                <rect key="frame" x="164" y="207" width="115" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7T-ux-en1">
-                                <rect key="frame" x="50" y="49" width="184" height="194"/>
+                                <rect key="frame" x="28" y="40" width="173" height="175"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="150"/>
+                                <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="135"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJg-Gl-gcQ">
+                                <rect key="frame" x="164" y="247" width="115" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -182,7 +182,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EzU-g2-DMa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="AYa-QH-Hww" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1677.5999999999999" y="35.532233883058474"/>
+            <point key="canvasLocation" x="1676.25" y="34.859154929577464"/>
         </scene>
     </scenes>
     <resources>

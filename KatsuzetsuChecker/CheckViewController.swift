@@ -51,6 +51,9 @@ class CheckViewController: UIViewController {
     
     //得点を出すための配列、[言った言葉, タイム]
     var answerArray: [[Any]] = []
+    
+    //認識終了したよてきな
+    var finishFinish: Bool = false
 
     
     
@@ -199,8 +202,6 @@ class CheckViewController: UIViewController {
 
     //録音を開始した時に呼ばれるメソッド
     private func startRecording() throws {
-    
-        print("startRecording")
         
         //recognitionTaskを空にする
         refreshTask()
@@ -244,10 +245,9 @@ class CheckViewController: UIViewController {
         
             // エラーがある、もしくは最後の認識結果だった場合の処理
             if error != nil || isFinal {
-                print("認識終了")
-                
             
                 self.answerArray.append([self.nowText, self.count])
+                print("checkのanswer更新した")
                 
                 self.nowText = "now"
                 self.preText = "pre"
@@ -258,7 +258,14 @@ class CheckViewController: UIViewController {
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
                 
-                //self.button.setTitle("音声認識スタート", for: [])
+                //問題出しきってたら画面遷移、違うならお題のラベルセットしてtTCount上げる
+                if self.tTCount == 2 {
+                    self.performSegueToResultView()
+                } else {
+                    self.tTCount += 1
+                    self.setTTLabel()
+                    self.button.isEnabled = true
+                }
             }
         }
         
@@ -303,20 +310,6 @@ class CheckViewController: UIViewController {
             //得点のためのタイマーをとめる
             timer.invalidate()
             
-            //問題出しきってたら画面遷移、違うならお題のラベルセットしてtTCount上げる
-            if tTCount == 2 {
-                
-                //x秒後に画面遷移メソッドを呼ぶ
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self.performSegueToResultView()
-                }
-            } else {
-                tTCount += 1
-                setTTLabel()
-                //self.button.isHidden = false
-                //self.button.setImage(startSpeakImg, for: UIControlState.normal)
-                self.button.isEnabled = true
-            }
         }
         self.preText = self.nowText
     }
