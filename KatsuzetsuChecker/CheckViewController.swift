@@ -247,7 +247,6 @@ class CheckViewController: UIViewController {
             if error != nil || isFinal {
             
                 self.answerArray.append([self.nowText, self.count])
-                print("checkのanswer更新した")
                 
                 self.nowText = "now"
                 self.preText = "pre"

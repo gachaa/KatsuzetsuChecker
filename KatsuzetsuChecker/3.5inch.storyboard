@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4sw-Fo-fY8">
+    <device id="retina3_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OthutomeFont_ver1.04.ttf">
+            <string>Othutome_font-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="T78-ys-ywe">
+            <objects>
+                <viewController id="4sw-Fo-fY8" customClass="ViewController" customModule="KatsuzetsuChecker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZlZ-yI-UOA"/>
+                        <viewControllerLayoutGuide type="bottom" id="CYi-ju-Dqs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nbY-4r-9Wa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="3.5bg-top.png" translatesAutoresizingMaskIntoConstraints="NO" id="iBF-Ma-4Xe">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2dH-gj-NNI">
+                                <rect key="frame" x="118" y="294" width="85" height="85"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="bt-start.png"/>
+                                <connections>
+                                    <segue destination="TlZ-Pd-Fb2" kind="presentation" id="ZII-Vk-8PU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="button" destination="2dH-gj-NNI" id="m2F-2L-PDo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oQG-h7-bre" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="116.25" y="33.75"/>
+        </scene>
+        <!--Check View Controller-->
+        <scene sceneID="oO3-ra-JGb">
+            <objects>
+                <viewController id="TlZ-Pd-Fb2" customClass="CheckViewController" customModule="KatsuzetsuChecker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="T8J-HP-c5M"/>
+                        <viewControllerLayoutGuide type="bottom" id="961-pe-QdE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="COh-qV-U74">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="3.5bg-check.png" translatesAutoresizingMaskIntoConstraints="NO" id="9af-T5-N5J">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lZ5-Sf-mX2">
+                                <rect key="frame" x="118" y="294" width="85" height="85"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="bt-speak.png"/>
+                                <connections>
+                                    <action selector="tappedStartButton:" destination="TlZ-Pd-Fb2" eventType="touchUpInside" id="LKP-S8-H4H"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="隣の客はよく柿食う客だ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPU-hl-ciC">
+                                <rect key="frame" x="66" y="53" width="189" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="隣の客はよく柿食う客だ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFY-YN-pzd">
+                                <rect key="frame" x="51" y="82" width="218" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="隣の客はよく柿食う客だ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qd-1O-1wO">
+                                <rect key="frame" x="51" y="111" width="218" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOI-FY-Jex">
+                                <rect key="frame" x="116" y="273" width="88" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="16"/>
+                                <color key="textColor" red="0.59526553959999995" green="0.59526553959999995" blue="0.59526553959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sru-aD-ONb">
+                                <rect key="frame" x="43" y="174" width="235" height="81"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="button" destination="lZ5-Sf-mX2" id="bSO-Hi-PQ2"/>
+                        <outlet property="label" destination="sru-aD-ONb" id="Chy-Sp-Tpl"/>
+                        <outlet property="tTLabel" destination="KPU-hl-ciC" id="jDQ-OE-4C4"/>
+                        <outlet property="tTLabel2" destination="SFY-YN-pzd" id="Khz-CF-fdJ"/>
+                        <outlet property="tTLabel3" destination="9qd-1O-1wO" id="lb4-Q4-z4L"/>
+                        <outlet property="timeLabel" destination="YOI-FY-Jex" id="F6a-Ve-fB2"/>
+                        <segue destination="1qv-CT-upG" kind="presentation" identifier="toResultView" id="k36-Pe-8VW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B3j-pD-knA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="903.75" y="33.75"/>
+        </scene>
+        <!--Result View Controller-->
+        <scene sceneID="yYx-fP-V0d">
+            <objects>
+                <viewController id="1qv-CT-upG" customClass="ResultViewController" customModule="KatsuzetsuChecker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fVd-ad-hlf"/>
+                        <viewControllerLayoutGuide type="bottom" id="bdf-SU-5C2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UbO-GI-JQd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="3.5bg-result.png" translatesAutoresizingMaskIntoConstraints="NO" id="yFw-lY-gCO">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfn-n8-gZj">
+                                <rect key="frame" x="118" y="294" width="85" height="85"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="タイトルへ" image="bt-top.png"/>
+                                <connections>
+                                    <segue destination="hVP-Tn-Y45" kind="unwind" unwindAction="unwindToVCWithSegue:" id="D9h-XD-jja"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Glr-eU-Mpy">
+                                <rect key="frame" x="162" y="158" width="115" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zs8-8q-4dr">
+                                <rect key="frame" x="54" y="23" width="140" height="133"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="120"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ddu-yL-5QR">
+                                <rect key="frame" x="162" y="198" width="115" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Othutome_font-Bold" family="おつとめフォント" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="accuracyPointLabel" destination="Ddu-yL-5QR" id="hdb-ze-zIK"/>
+                        <outlet property="pointLabel" destination="zs8-8q-4dr" id="dqZ-u6-im2"/>
+                        <outlet property="timePointLabel" destination="Glr-eU-Mpy" id="ce5-4v-xg4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zgh-nB-Jr2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="hVP-Tn-Y45" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1676.25" y="33.75"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="3.5bg-check.png" width="451" height="676"/>
+        <image name="3.5bg-result.png" width="451" height="676"/>
+        <image name="3.5bg-top.png" width="451" height="676"/>
+        <image name="bt-speak.png" width="251" height="251"/>
+        <image name="bt-start.png" width="251" height="251"/>
+        <image name="bt-top.png" width="251" height="251"/>
+    </resources>
+</document>
